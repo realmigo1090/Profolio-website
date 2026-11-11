@@ -412,7 +412,7 @@
   };
 
   const openProject = (i) => {
-    const p = typeof i === "object" ? i : PROJECTS[i];
+    const p = typeof i === "object" ? i : /^\d+$/.test(String(i)) ? PROJECTS[Number(i)] : PROJECTS.find((x) => x.id === i);
     if (!p) return;
     lastFocus = document.activeElement;
     $$("video").forEach((v) => { if (!v.closest(".lightbox")) pauseVideo(v); });
@@ -458,7 +458,7 @@
   };
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-open-project]");
-    if (trigger) openProject(Number(trigger.dataset.openProject));
+    if (trigger) openProject(trigger.dataset.openProject);
     const vt = e.target.closest("[data-open-viral]");
     if (vt) openViral(Number(vt.dataset.openViral));
     const ft = e.target.closest("[data-open-film]");
@@ -468,7 +468,7 @@
     if (e.key === "Escape") { closeProject(); closeMenu(); }
     if (e.key === "Enter") {
       const trigger = e.target.closest && e.target.closest("[data-open-project]");
-      if (trigger) openProject(Number(trigger.dataset.openProject));
+      if (trigger) openProject(trigger.dataset.openProject);
       const vt = e.target.closest && e.target.closest("[data-open-viral]");
       if (vt) openViral(Number(vt.dataset.openViral));
       const ft = e.target.closest && e.target.closest("[data-open-film]");
