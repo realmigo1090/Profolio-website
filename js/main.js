@@ -125,6 +125,70 @@
   };
   $$("[data-hover-video]").forEach(bindHoverVideo);
 
+  /* ---------- YouTube hover previews (muted, cropped, no YouTube chrome) ---------- */
+  let ytReady = null;
+  const loadYT = () => {
+    if (ytReady) return ytReady;
+    ytReady = new Promise((resolve) => {
+      if (window.YT && window.YT.Player) return resolve(window.YT);
+      const prevCb = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => { prevCb && prevCb(); resolve(window.YT); };
+      const s = document.createElement("script");
+      s.src = "https://www.youtube.com/iframe_api";
+      s.async = true;
+      document.head.appendChild(s);
+    });
+    return ytReady;
+  };
+  // size the iframe to "cover" its card, oversized so YouTube's title bar and logo sit outside the crop
+  const fitYT = (wrap) => {
+    const f = $("iframe", wrap);
+    if (!f) return;
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    const fw = Math.max(w, (h * 16) / 9) * 1.28;
+    f.style.width = `${fw}px`;
+    f.style.height = `${(fw * 9) / 16}px`;
+  };
+  window.addEventListener("resize", () => $$(".slide__yt").forEach(fitYT));
+
+  const bindHoverYT = (el) => {
+    const wrap = $(".slide__yt", el);
+    const id = wrap.dataset.yt;
+    const start = parseInt(wrap.dataset.start, 10) || 0;
+    let player = null, want = false;
+    const play = () => {
+      want = true;
+      if (player && player.playVideo) { player.mute(); player.playVideo(); return; }
+      if (player) return; // still being created
+      player = "pending";
+      loadYT().then((YT) => {
+        player = new YT.Player($(".slide__yt-player", wrap), {
+          videoId: id,
+          playerVars: { autoplay: 1, mute: 1, controls: 0, start, playsinline: 1, rel: 0, modestbranding: 1,
+                        loop: 1, playlist: id, disablekb: 1, fs: 0, iv_load_policy: 3, cc_load_policy: 0 },
+          events: {
+            onReady: (e) => { fitYT(wrap); e.target.mute(); want ? e.target.playVideo() : e.target.pauseVideo(); },
+            onStateChange: (e) => {
+              if (e.data === YT.PlayerState.PLAYING) wrap.classList.toggle("is-playing", want);
+              if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(start); e.target.playVideo(); }
+            },
+          },
+        });
+      });
+    };
+    const stop = () => {
+      want = false;
+      wrap.classList.remove("is-playing");
+      if (player && player.pauseVideo) player.pauseVideo();
+    };
+    if (finePointer) {
+      el.addEventListener("mouseenter", play);
+      el.addEventListener("mouseleave", stop);
+    } else {
+      new IntersectionObserver((es) => es.forEach((e) => (e.isIntersecting ? play() : stop())), { threshold: 0.6 }).observe(el);
+    }
+  };
+
   /* ---------------- hero intro + reveals ---------------- */
   const markLoaded = () => document.body.classList.add("is-loaded");
   if (document.readyState === "complete") requestAnimationFrame(markLoaded);
@@ -190,7 +254,9 @@
   const slideHTML = (p, i) => `
     <article class="slide">
       <div class="slide__media" data-hover-video data-open-project="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${p.title}">
-        <video muted playsinline loop preload="metadata" data-src="${p.preview}#t=${p.start ?? 1}"></video>
+        ${p.youtube
+          ? `<div class="slide__yt" data-yt="${p.youtube}" data-start="${p.start ?? 30}"><img src="https://i.ytimg.com/vi/${p.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${p.youtube}/hqdefault.jpg'" alt="" loading="lazy" /><div class="slide__yt-player"></div></div>`
+          : `<video muted playsinline loop preload="metadata" data-src="${p.preview}#t=${p.start ?? 1}"></video>`}
         <div class="slide__top">
           <span class="tag">${p.category.toUpperCase()}</span>
           <span class="slide__play" aria-hidden="true"></span>
@@ -218,7 +284,7 @@
   if (track && PROJECTS.length) {
     track.innerHTML = PROJECTS.map(slideHTML).join("");
     watchLazy(track);
-    $$("[data-hover-video]", track).forEach(bindHoverVideo);
+    $$("[data-hover-video]", track).forEach((el) => ($(".slide__yt", el) ? bindHoverYT(el) : bindHoverVideo(el)));
 
     const slides = $$(".slide", track);
     const total = slides.length;

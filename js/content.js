@@ -5,6 +5,7 @@
    Add, remove or reorder entries and the site updates itself.
 
    preview : short muted clip that plays on hover (videos/<name>-preview.mp4)
+   youtube : (instead of preview) a YouTube video ID; the card plays it muted on hover
    full    : what opens when someone clicks the card. Either:
                - an mp4 file  ("videos/<name>.mp4"), or
                - a Vimeo / YouTube link ("https://vimeo.com/123456789")
@@ -16,6 +17,66 @@
    ===================================================================== */
 
 window.PROJECTS = [
+  {
+    title: "Cobalt Blue",
+    client: "BIGBABYGUCCI",
+    category: "Music Video",
+    description: "Music video for BIGBABYGUCCI.",
+    youtube: "v9NQkTuEPnY",
+    full: "https://youtu.be/v9NQkTuEPnY",
+    start: 30,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "View",
+    client: "Jaimoe",
+    category: "Music Video",
+    description: "Music video for Jaimoe.",
+    youtube: "8XaP__-eDSE",
+    full: "https://youtu.be/8XaP__-eDSE",
+    start: 30,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "I h8 mY Anxiety",
+    client: "Jahzae Rose",
+    category: "Music Video",
+    description: "Music video for Jahzae Rose.",
+    youtube: "0jehh_SNCMk",
+    full: "https://youtu.be/0jehh_SNCMk",
+    start: 30,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "Purpose",
+    client: "Mili2skunk",
+    category: "Music Video",
+    description: "Music video for Mili2skunk.",
+    youtube: "Ie6zMyeiecI",
+    full: "https://youtu.be/Ie6zMyeiecI",
+    start: 30,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "HOT",
+    client: "Petros",
+    category: "Music Video",
+    description: "Music video for Petros.",
+    youtube: "3fquIJ7WpKI",
+    full: "https://youtu.be/3fquIJ7WpKI",
+    start: 30,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
   {
     title: "Elite",
     client: "Javi Mac x Riff Raff x Mike G",
