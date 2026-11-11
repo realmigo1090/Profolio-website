@@ -210,3 +210,22 @@ window.PROJECTS = [
     ],
   },
 ];
+
+/* =====================================================================
+   VIRAL WORK — the row under the 20M+ card
+   ---------------------------------------------------------------------
+   Keep this list newest first. views = YouTube view count when added
+   (Nov 2026); the total under the heading is added up from these.
+   ===================================================================== */
+
+window.VIRAL = [
+  { title: "I h8 mY Anxiety", artist: "Jahzae Rose", youtube: "0jehh_SNCMk", date: "2025-04-11", views: 73403, start: 20 },
+  { title: "Even Angels Cry", artist: "Petros", youtube: "7ld2Nc8ELHY", date: "2023-06-16", views: 159936, start: 20 },
+  { title: "vendetta!", artist: "Sadfriendd x Mupp", youtube: "CZWbgOXGvf4", date: "2022-08-05", views: 7470080, start: 20 },
+  { title: "Let's Be Friends", artist: "YusDrew x Sad Frosty", youtube: "aXRtqtsYgBY", date: "2019-11-22", views: 1885141, start: 20 },
+  { title: "Turning McDonalds Employee Into Viral Rapper in 24 Hours", artist: "Quadeca", youtube: "H5yktH_104I", date: "2019-11-22", views: 3888308, start: 20 },
+  { title: "Turning Random Stranger Into Viral Rapper in 24 Hours", artist: "Quadeca", youtube: "kgKKt5ngbuM", date: "2019-10-19", views: 3976038, start: 20 },
+  { title: "Walk Thru", artist: "Salim the Dream", youtube: "LzQFarWsvn8", date: "2019-10-19", views: 2354077, start: 20 },
+  { title: "TOMFOOLERY!", artist: "Quadeca x EGOVERT x KIL x Moxas", youtube: "9k4azasazZ8", date: "2019-08-01", views: 1258788, start: 20 },
+  { title: "HEY!", artist: "EGOVERT & KIL", youtube: "fY7imWULdwg", date: "2019-05-23", views: 2334699, start: 20 },
+];

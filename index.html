@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=2026111102" />
+  <link rel="stylesheet" href="css/style.css?v=2026111103" />
 </head>
 <body>
 
@@ -104,7 +104,8 @@
         <p class="label card__caption">[ LATE NIGHTS —<br />LOUD ROOMS ]</p>
       </article>
 
-      <article class="card card--stat" data-reveal>
+      <a href="#viral" class="card card--stat" data-reveal aria-label="20M+ views on my videos, see the videos">
+        <span class="circle-btn circle-btn--lime" aria-hidden="true"><i class="arrow arrow--right"></i></span>
         <p class="stat"><span>20M</span><em>+</em></p>
         <div class="stat__row">
           <div class="avatars avatars--sm">
@@ -118,7 +119,19 @@
         <div class="tags">
           <span class="tag">HIP HOP</span><span class="tag">ELECTRONIC</span><span class="tag">LIVE</span>
         </div>
-      </article>
+      </a>
+    </section>
+
+    <!-- ============ VIRAL WORK (cards come from window.VIRAL in js/content.js) ============ -->
+    <section class="viral container" id="viral">
+      <div class="viral__head">
+        <div>
+          <p class="label">[ 20M+ VIEWS ]</p>
+          <h2 class="h2">The ones that<br />went viral.</h2>
+        </div>
+        <p class="label viral__total" data-viral-total></p>
+      </div>
+      <div class="viral__grid" data-viral-grid></div>
     </section>
 
     <!-- ============ MARQUEE: SERVICES ============ -->
@@ -301,7 +314,7 @@
   </svg>
 
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/content.js?v=2026111102"></script>
-  <script src="js/main.js?v=2026111102"></script>
+  <script src="js/content.js?v=2026111103"></script>
+  <script src="js/main.js?v=2026111103"></script>
 </body>
 </html>

@@ -281,6 +281,32 @@
       </aside>
     </article>`;
 
+  /* ---------------- viral work grid ---------------- */
+  const VIRAL = window.VIRAL || [];
+  const fmtViews = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1).replace(/\.0$/, "")}M` : `${Math.round(n / 1e3)}K`);
+  const viralGrid = $("[data-viral-grid]");
+  if (viralGrid && VIRAL.length) {
+    viralGrid.innerHTML = VIRAL.map((v, i) => `
+      <article class="vcard" data-open-viral="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${v.title}">
+        <div class="vcard__media">
+          <div class="slide__yt" data-yt="${v.youtube}" data-start="${v.start ?? 20}">
+            <img src="https://i.ytimg.com/vi/${v.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'" alt="" loading="lazy" />
+            <div class="slide__yt-player"></div>
+          </div>
+          <span class="tag vcard__views">${fmtViews(v.views)} views</span>
+          <span class="slide__play" aria-hidden="true"></span>
+        </div>
+        <div class="vcard__meta">
+          <h3 class="vcard__title">${v.title}</h3>
+          <p class="vcard__sub">${v.artist} · ${new Date(v.date).getFullYear()}</p>
+        </div>
+      </article>`).join("");
+    $$(".vcard", viralGrid).forEach(bindHoverYT);
+    const total = VIRAL.reduce((s, v) => s + v.views, 0);
+    const totalEl = $("[data-viral-total]");
+    if (totalEl) totalEl.textContent = `${fmtViews(total)} views across these ${VIRAL.length} videos`;
+  }
+
   if (track && PROJECTS.length) {
     track.innerHTML = PROJECTS.map(slideHTML).join("");
     watchLazy(track);
@@ -386,7 +412,7 @@
   };
 
   const openProject = (i) => {
-    const p = PROJECTS[i];
+    const p = typeof i === "object" ? i : PROJECTS[i];
     if (!p) return;
     lastFocus = document.activeElement;
     $$("video").forEach((v) => { if (!v.closest(".lightbox")) pauseVideo(v); });
@@ -418,15 +444,27 @@
     lastFocus && lastFocus.focus && lastFocus.focus({ preventScroll: true });
   };
 
+  const openViral = (n) => {
+    const v = VIRAL[n];
+    if (!v) return;
+    openProject({
+      title: v.title, client: v.artist, category: "Music Video", year: new Date(v.date).getFullYear(),
+      description: `${fmtViews(v.views)} views on YouTube.`, full: `https://youtu.be/${v.youtube}`, credits: [],
+    });
+  };
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-open-project]");
     if (trigger) openProject(Number(trigger.dataset.openProject));
+    const vt = e.target.closest("[data-open-viral]");
+    if (vt) openViral(Number(vt.dataset.openViral));
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeProject(); closeMenu(); }
     if (e.key === "Enter") {
       const trigger = e.target.closest && e.target.closest("[data-open-project]");
       if (trigger) openProject(Number(trigger.dataset.openProject));
+      const vt = e.target.closest && e.target.closest("[data-open-viral]");
+      if (vt) openViral(Number(vt.dataset.openViral));
     }
   });
   $(".lightbox__close", lb).addEventListener("click", closeProject);
