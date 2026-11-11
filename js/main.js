@@ -452,11 +452,17 @@
       description: `${fmtViews(v.views)} views on YouTube.`, full: `https://youtu.be/${v.youtube}`, credits: [],
     });
   };
+  const openFilm = (el) => {
+    const d = el.dataset;
+    openProject({ title: d.filmTitle, client: d.filmClient, category: d.filmCategory, full: d.filmSrc, credits: [["Director", "Nash Browin"]] });
+  };
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-open-project]");
     if (trigger) openProject(Number(trigger.dataset.openProject));
     const vt = e.target.closest("[data-open-viral]");
     if (vt) openViral(Number(vt.dataset.openViral));
+    const ft = e.target.closest("[data-open-film]");
+    if (ft) openFilm(ft);
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeProject(); closeMenu(); }
@@ -465,6 +471,8 @@
       if (trigger) openProject(Number(trigger.dataset.openProject));
       const vt = e.target.closest && e.target.closest("[data-open-viral]");
       if (vt) openViral(Number(vt.dataset.openViral));
+      const ft = e.target.closest && e.target.closest("[data-open-film]");
+      if (ft) openFilm(ft);
     }
   });
   $(".lightbox__close", lb).addEventListener("click", closeProject);

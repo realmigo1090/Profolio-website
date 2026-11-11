@@ -197,18 +197,6 @@ window.PROJECTS = [
       ["Director", "Nash Browin"],
     ],
   },
-  {
-    title: "Facetime",
-    client: "Shay$tax x Mike G",
-    category: "Music Video",
-    description: "Music video for Shay$tax x Mike G.",
-    preview: "videos/shaystax-facetime-preview.mp4",
-    full: "videos/shaystax-facetime.mp4",
-    start: 0,
-    credits: [
-      ["Director", "Nash Browin"],
-    ],
-  },
 ];
 
 /* =====================================================================
