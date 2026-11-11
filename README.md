@@ -22,7 +22,7 @@ Then open http://localhost:5173.
 
 **Projects (Works carousel):** edit `js/content.js`. Each project has:
 
-- `preview`: a short muted clip that plays on hover, e.g. `"videos/night-shift-preview.mp4"` (720p, 5–15 s, a few MB)
+- `preview`: a short muted clip that plays on hover, e.g. `"videos/basement-tapes-preview.mp4"` (720p, 5–15 s, a few MB)
 - `full`: what opens on click. Either an mp4 or a Vimeo / YouTube link (`"https://vimeo.com/123456789"`)
 - `title`, `client`, `category`, `year`, `description`, the client `quote`, a `stat` and the `credits` list
 
