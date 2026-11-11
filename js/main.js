@@ -29,6 +29,7 @@
 
   $$('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
+      if (a.hasAttribute("data-book")) return; // booking buttons open the form instead
       const id = a.getAttribute("href");
       const target = id === "#top" ? document.body : $(id);
       if (!target) return;
@@ -511,4 +512,100 @@
   };
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
   window.addEventListener("resize", fit);
+
+  /* ---------------- booking form → email (FormSubmit) ---------------- */
+  const book = $("#book");
+  if (book) {
+    const ENDPOINT = "https://formsubmit.co/ajax/nashbrowin@gmail.com";
+    const form = $("[data-book-form]", book);
+    const formView = $("[data-book-form-view]", book);
+    const doneView = $("[data-book-done]", book);
+    const errEl = $("[data-book-error]", book);
+    const labelEl = $("[data-book-label]", book);
+    const submitBtn = $(".book__submit", book);
+    let returnFocus = null;
+
+    const openBook = () => {
+      returnFocus = document.activeElement;
+      if (typeof closeMenu === "function") closeMenu();
+      formView.hidden = false;
+      doneView.hidden = true;
+      book.hidden = false;
+      requestAnimationFrame(() => book.classList.add("is-open"));
+      lenis && lenis.stop();
+      document.body.style.overflow = "hidden";
+      setTimeout(() => { const f = $('input[name="name"]', book); f && f.focus({ preventScroll: true }); }, 420);
+    };
+    const closeBook = () => {
+      if (book.hidden) return;
+      book.classList.remove("is-open");
+      lenis && lenis.start();
+      document.body.style.overflow = "";
+      setTimeout(() => { book.hidden = true; }, 600);
+      returnFocus && returnFocus.focus && returnFocus.focus({ preventScroll: true });
+    };
+    $$("[data-book]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); openBook(); }));
+    $$("[data-book-close]", book).forEach((b) => b.addEventListener("click", closeBook));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeBook(); });
+
+    // accept "@name", "name" or a full profile link
+    const handle = (v) => String(v || "").trim()
+      .replace(/^https?:\/\/(www\.|m\.)?(instagram\.com|tiktok\.com)\/@?/i, "")
+      .replace(/^@/, "").replace(/[/?#].*$/, "");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errEl.hidden = true;
+      form.classList.add("was-validated");
+      if (!form.checkValidity()) {
+        const bad = $(":invalid", form);
+        bad && bad.focus();
+        return;
+      }
+      const fd = new FormData(form);
+      if (fd.get("_honey")) return; // bots
+      const ig = handle(fd.get("instagram"));
+      const tt = handle(fd.get("tiktok"));
+      const name = String(fd.get("name")).trim();
+      const email = String(fd.get("email")).trim();
+      const payload = {
+        _subject: `New booking inquiry: ${name}`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: email,
+        Name: name,
+        Email: email,
+        Instagram: ig ? `@${ig}  (https://www.instagram.com/${ig})` : "-",
+        TikTok: tt ? `@${tt}  (https://www.tiktok.com/@${tt})` : "-",
+        "Looking for": fd.getAll("services").join(", ") || "-",
+        Budget: fd.get("budget") || "-",
+        "Release / shoot date": fd.get("date") || "-",
+        Project: String(fd.get("message")).trim(),
+      };
+      submitBtn.disabled = true;
+      labelEl.textContent = "Sending…";
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || String(data.success) !== "true") throw new Error(data.message || "send failed");
+        $("[data-book-name]", book).textContent = name.split(" ")[0];
+        $("[data-book-email]", book).textContent = email;
+        form.reset();
+        form.classList.remove("was-validated");
+        formView.hidden = true;
+        doneView.hidden = false;
+        $(".book__panel", book).scrollTop = 0;
+      } catch (err) {
+        errEl.innerHTML = 'That didn’t go through. Please try again, or email me at <a href="mailto:nashbrowin@gmail.com?subject=Booking%20inquiry">nashbrowin@gmail.com</a>.';
+        errEl.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        labelEl.textContent = "Send inquiry";
+      }
+    });
+  }
 })();

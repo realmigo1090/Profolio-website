@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=2026111107" />
+  <link rel="stylesheet" href="css/style.css?v=2026111108" />
 </head>
 <body>
 
@@ -26,7 +26,7 @@
         <a href="#services">Services</a>
         <a href="#works">Works <span class="nav__count">(<span data-works-count>06</span>)</span></a>
       </nav>
-      <a href="#contact" class="pill pill--outline nav__cta">Contact me</a>
+      <a href="#contact" class="pill pill--outline nav__cta" data-book>Contact me</a>
       <button class="nav__menu-btn" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
     </div>
   </header>
@@ -70,7 +70,7 @@
               <span class="line"><span>things move.</span></span>
             </h1>
           </div>
-          <a href="#contact" class="pill pill--lime" data-reveal>Let's talk <i class="arrow"></i></a>
+          <a href="#contact" class="pill pill--lime" data-reveal data-book>Let's talk <i class="arrow"></i></a>
         </div>
       </div>
     </section>
@@ -314,7 +314,7 @@
       <div class="contact__inner container">
         <p class="label" data-reveal>[ GOT A RECORD COMING OUT? ]</p>
         <h2 class="contact__title" data-reveal>Send me<br />the track.</h2>
-        <a class="pill pill--lime" href="mailto:nashbrowin@gmail.com" data-reveal>Get in touch <i class="arrow"></i></a>
+        <a class="pill pill--lime" href="mailto:nashbrowin@gmail.com" data-reveal data-book>Get in touch <i class="arrow"></i></a>
 
         <div class="contact__meta">
           <p class="small">© 2026 Nash Browin.</p>
@@ -347,6 +347,63 @@
     </div>
   </div>
 
+
+  <!-- booking form (opens from "Get in touch", "Contact me", "Let's talk"); sends to email via FormSubmit -->
+  <div class="book" id="book" hidden role="dialog" aria-modal="true" aria-labelledby="book-title">
+    <div class="book__backdrop" data-book-close></div>
+    <aside class="book__panel" data-lenis-prevent>
+      <div class="book__top">
+        <p class="label">[ BOOKING ]</p>
+        <button class="book__close" type="button" data-book-close aria-label="Close booking form">Close <span>✕</span></button>
+      </div>
+
+      <div class="book__view" data-book-form-view>
+        <h2 id="book-title" class="book__title">Let's make<br />something move.</h2>
+        <p class="book__lede">Tell me about the record, the brand or the idea. I read every inquiry myself and reply by email.</p>
+        <form class="book__form" data-book-form novalidate>
+          <div class="field-row">
+            <label class="field"><span>Name *</span><input name="name" autocomplete="name" required placeholder="Your name or artist name" /></label>
+            <label class="field"><span>Email *</span><input name="email" type="email" autocomplete="email" required placeholder="you@email.com" /></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span>Instagram</span><span class="handle"><i>@</i><input name="instagram" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="yourhandle" /></span></label>
+            <label class="field"><span>TikTok</span><span class="handle"><i>@</i><input name="tiktok" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="yourhandle" /></span></label>
+          </div>
+          <fieldset class="field">
+            <legend>What do you need?</legend>
+            <div class="chips"><label class="chip"><input type="checkbox" name="services" value="Music video" /><span>Music video</span></label><label class="chip"><input type="checkbox" name="services" value="Visualizer" /><span>Visualizer</span></label><label class="chip"><input type="checkbox" name="services" value="Motion graphics" /><span>Motion graphics</span></label><label class="chip"><input type="checkbox" name="services" value="Branded content" /><span>Branded content</span></label><label class="chip"><input type="checkbox" name="services" value="Vlog / recap" /><span>Vlog / recap</span></label><label class="chip"><input type="checkbox" name="services" value="Editing only" /><span>Editing only</span></label><label class="chip"><input type="checkbox" name="services" value="Something else" /><span>Something else</span></label></div>
+          </fieldset>
+          <div class="field-row">
+            <label class="field"><span>Budget</span>
+              <select name="budget">
+                <option value="">Select a range</option>
+                <option>Under $1K</option><option>$1K – $3K</option><option>$3K – $5K</option>
+                <option>$5K – $10K</option><option>$10K+</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="field"><span>Release / shoot date</span><input name="date" type="date" /></label>
+          </div>
+          <label class="field"><span>Tell me about the project *</span>
+            <textarea name="message" rows="5" required placeholder="The song or brand, the vibe, references, links, where it's going…"></textarea>
+          </label>
+          <input class="book__hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="book__actions">
+            <button class="pill pill--lime book__submit" type="submit"><span data-book-label>Send inquiry</span> <i class="arrow"></i></button>
+            <p class="small book__note">Prefer email? <a href="mailto:nashbrowin@gmail.com">nashbrowin@gmail.com</a></p>
+          </div>
+          <p class="book__error" data-book-error role="alert" hidden></p>
+        </form>
+      </div>
+
+      <div class="book__view book__done" data-book-done hidden>
+        <span class="book__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <h2 class="book__title">Inquiry sent.</h2>
+        <p class="book__lede">Thanks, <strong data-book-name></strong>. It's in my inbox, and I'll get back to you at <strong data-book-email></strong>.</p>
+        <button class="pill pill--outline" type="button" data-book-close>Back to the site</button>
+      </div>
+    </aside>
+  </div>
+
   <!-- cursor bubble (desktop only) -->
   <div class="cursor" aria-hidden="true"><span>Play</span></div>
 
@@ -358,7 +415,7 @@
   </svg>
 
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/content.js?v=2026111107"></script>
-  <script src="js/main.js?v=2026111107"></script>
+  <script src="js/content.js?v=2026111108"></script>
+  <script src="js/main.js?v=2026111108"></script>
 </body>
 </html>
