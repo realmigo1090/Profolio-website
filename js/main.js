@@ -198,7 +198,7 @@
         <div class="slide__bottom">
           <div>
             <h3 class="slide__title">${p.title}</h3>
-            <p class="slide__desc">${p.description}</p>
+            <p class="slide__desc">${p.description ?? ""}</p>
           </div>
           <span class="pill pill--lime pill--sm">Watch film <i class="arrow"></i></span>
         </div>
@@ -206,7 +206,7 @@
       <aside class="slide__info">
         <div class="slide__person">
           <strong>${p.quote?.name ?? p.client}</strong>
-          <span>${p.quote?.role ?? p.year}</span>
+          <span>${p.quote?.role ?? p.year ?? p.category}</span>
         </div>
         <div>
           ${p.quote ? `<p class="slide__quote">“${p.quote.text}”</p>` : ""}

@@ -4,149 +4,148 @@
    Every project in the "Works" carousel comes from this list.
    Add, remove or reorder entries and the site updates itself.
 
-   preview : short muted clip that plays on hover (mp4, ~720p, 5–15s)
-             e.g. "videos/basement-tapes-preview.mp4"
+   preview : short muted clip that plays on hover (videos/<name>-preview.mp4)
    full    : what opens when someone clicks the card. Either:
-               - an mp4 file  ("videos/basement-tapes.mp4"), or
+               - an mp4 file  ("videos/<name>.mp4"), or
                - a Vimeo / YouTube link ("https://vimeo.com/123456789")
    start   : (optional) second to start the preview from
-   quote   : (optional) a line from the artist / collaborator
-   stat    : (optional) one small number for the purple card
-
-   Everything below is placeholder: free stock clips from mixkit.co
-   and made-up artists. Swap in the real stuff.
+   year    : (optional) shown next to the artist
+   quote   : (optional) { text, name, role } from the artist / collaborator
+   stat    : (optional) { value, label } one small number for the card
+   credits : list of [role, name] pairs shown in the player
    ===================================================================== */
-
-const MIX = (id, q = 720) => `https://assets.mixkit.co/videos/${id}/${id}-${q}.mp4`;
 
 window.PROJECTS = [
   {
-    title: "Basement Tapes",
-    client: "Kilo Juniper",
+    title: "Elite",
+    client: "Javi Mac x Riff Raff x Mike G",
     category: "Music Video",
-    year: 2026,
-    description: "Shot in one night in the room where the record was made. Every light we used fit in a backpack.",
-    preview: MIX(36762),
-    full: MIX(36762),
-    start: 5,
-    quote: {
-      text: "He came to the session, heard the record once, and had the whole idea by the second play.",
-      name: "Kilo Juniper",
-      role: "Artist",
-    },
-    stat: { value: "1", label: "Night to\nshoot it" },
+    description: "Music video for Javi Mac x Riff Raff x Mike G.",
+    preview: "videos/javi-mac-elite-preview.mp4",
+    full: "videos/javi-mac-elite.mp4",
+    start: 0,
     credits: [
       ["Director", "Nash Browin"],
-      ["Director of Photography", "Nash Browin"],
-      ["Editor", "Nash Browin"],
-      ["Colorist", "Nash Browin"],
-      ["Producer", "Placeholder Name"],
     ],
   },
   {
-    title: "Corner Store",
-    client: "Duke Halloway",
+    title: "Intenchon",
+    client: "Wilsonn",
     category: "Music Video",
-    year: 2026,
-    description: "Five dancers, one block and about three hours before the streetlights cut out.",
-    preview: MIX(51300),
-    full: MIX(51300, 1080),
-    quote: {
-      text: "Nash let the dancers lead and built the edit around them instead of the other way round.",
-      name: "Rae Okon",
-      role: "Choreographer",
-    },
-    stat: { value: "3", label: "Hours on\nthe block" },
+    description: "Music video for Wilsonn.",
+    preview: "videos/wilsonn-intenchon-preview.mp4",
+    full: "videos/wilsonn-intenchon.mp4",
+    start: 0,
     credits: [
       ["Director", "Nash Browin"],
-      ["Editor", "Nash Browin"],
-      ["Choreography", "Placeholder Name"],
-      ["Director of Photography", "Placeholder Name"],
-      ["Gaffer", "Placeholder Name"],
     ],
   },
   {
-    title: "Low Ceiling",
-    client: "Low Ceiling (club night)",
-    category: "Live Visuals",
-    year: 2025,
-    description: "Visual loops for a monthly warehouse night, triggered live off the decks.",
-    preview: MIX(4187),
-    full: MIX(4187, 1080),
-    quote: {
-      text: "The room feels different on the nights his visuals are running. People notice.",
-      name: "Dani Reyes",
-      role: "Promoter",
-    },
-    stat: { value: "12", label: "Nights\nso far" },
+    title: "Gata Favorita",
+    client: "Mili2skunk",
+    category: "Music Video",
+    description: "Music video for Mili2skunk.",
+    preview: "videos/mili2skunk-gata-favorita-preview.mp4",
+    full: "videos/mili2skunk-gata-favorita.mp4",
+    start: 0,
     credits: [
-      ["Visuals", "Nash Browin"],
-      ["Live VJ", "Nash Browin"],
-      ["Promoter", "Placeholder Name"],
-      ["Lighting", "Placeholder Name"],
+      ["Director", "Nash Browin"],
     ],
   },
   {
-    title: "Pressure",
-    client: "Vesper Ash — live",
-    category: "Show Recap",
-    year: 2025,
-    description: "A recap of a sold-out 400-cap show, shot from inside the pit.",
-    preview: MIX(48507),
-    full: MIX(48507),
-    quote: {
-      text: "It looks like the night actually felt. Nobody else has gotten that right for us.",
-      name: "Vesper Ash",
-      role: "Artist",
-    },
-    stat: { value: "400", label: "People in\nthe room" },
+    title: "333",
+    client: "Petros",
+    category: "Music Video",
+    description: "Music video for Petros.",
+    preview: "videos/petros-333-preview.mp4",
+    full: "videos/petros-333.mp4",
+    start: 0,
     credits: [
       ["Director", "Nash Browin"],
-      ["Camera", "Nash Browin"],
-      ["Editor", "Nash Browin"],
-      ["Second Camera", "Placeholder Name"],
     ],
   },
   {
-    title: "Side B",
-    client: "Moira Selk",
-    category: "Visualizer",
-    year: 2025,
-    description: "A visualizer for a 12-inch release, shot up close on the deck it was mixed on.",
-    preview: MIX(42960),
-    full: MIX(42960, 1080),
-    quote: {
-      text: "The first cut was the one we put out. That's never happened to me before.",
-      name: "Moira Selk",
-      role: "Producer & DJ",
-    },
-    stat: { value: "1", label: "Take, no\ncuts" },
+    title: "Even Angels Cry",
+    client: "Petros",
+    category: "Music Video",
+    description: "Music video for Petros.",
+    preview: "videos/petros-even-angels-cry-preview.mp4",
+    full: "videos/petros-even-angels-cry.mp4",
+    start: 0,
     credits: [
       ["Director", "Nash Browin"],
-      ["Director of Photography", "Nash Browin"],
-      ["Colorist", "Nash Browin"],
     ],
   },
   {
-    title: "Concrete Garden",
-    client: "Short documentary",
-    category: "Short Doc",
-    year: 2024,
-    description: "A short doc about the skate spot that doubles as the city's best free venue.",
-    preview: MIX(4568),
-    full: MIX(4568, 1080),
-    quote: {
-      text: "He hung around for months before he ever pulled the camera out. That's why it feels real.",
-      name: "Marco Lindqvist",
-      role: "Skater, featured",
-    },
-    stat: { value: "9", label: "Months\nfilming" },
+    title: "ZAZA",
+    client: "Foreva Paid",
+    category: "Music Video",
+    description: "Music video for Foreva Paid.",
+    preview: "videos/foreva-paid-zaza-preview.mp4",
+    full: "videos/foreva-paid-zaza.mp4",
+    start: 0,
     credits: [
       ["Director", "Nash Browin"],
-      ["Director of Photography", "Nash Browin"],
-      ["Editor", "Nash Browin"],
-      ["Sound", "Placeholder Name"],
-      ["Music", "Placeholder Name"],
+    ],
+  },
+  {
+    title: "No Idea",
+    client: "Leeto",
+    category: "Music Video",
+    description: "Music video for Leeto.",
+    preview: "videos/leeto-no-idea-preview.mp4",
+    full: "videos/leeto-no-idea.mp4",
+    start: 0,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "YouHoo",
+    client: "Leeto",
+    category: "Music Video",
+    description: "Music video for Leeto.",
+    preview: "videos/leeto-youhoo-preview.mp4",
+    full: "videos/leeto-youhoo.mp4",
+    start: 0,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "Mix It Up",
+    client: "Leeto ft. Yoshi",
+    category: "Music Video",
+    description: "Music video for Leeto ft. Yoshi.",
+    preview: "videos/leeto-mix-it-up-preview.mp4",
+    full: "videos/leeto-mix-it-up.mp4",
+    start: 0,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "Day Dreams",
+    client: "Bri",
+    category: "Music Video",
+    description: "Music video for Bri.",
+    preview: "videos/bri-day-dreams-preview.mp4",
+    full: "videos/bri-day-dreams.mp4",
+    start: 0,
+    credits: [
+      ["Director", "Nash Browin"],
+    ],
+  },
+  {
+    title: "Facetime",
+    client: "Shay$tax x Mike G",
+    category: "Music Video",
+    description: "Music video for Shay$tax x Mike G.",
+    preview: "videos/shaystax-facetime-preview.mp4",
+    full: "videos/shaystax-facetime.mp4",
+    start: 0,
+    credits: [
+      ["Director", "Nash Browin"],
     ],
   },
 ];
