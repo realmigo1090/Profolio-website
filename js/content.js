@@ -71,7 +71,7 @@ window.PROJECTS = [
     description: "Music video for Petros.",
     preview: "videos/petros-even-angels-cry-preview.mp4",
     full: "videos/petros-even-angels-cry.mp4",
-    start: 0,
+    start: 4,
     credits: [
       ["Director", "Nash Browin"],
     ],
@@ -83,7 +83,7 @@ window.PROJECTS = [
     description: "Music video for Foreva Paid.",
     preview: "videos/foreva-paid-zaza-preview.mp4",
     full: "videos/foreva-paid-zaza.mp4",
-    start: 0,
+    start: 2,
     credits: [
       ["Director", "Nash Browin"],
     ],
@@ -95,7 +95,7 @@ window.PROJECTS = [
     description: "Music video for Leeto.",
     preview: "videos/leeto-no-idea-preview.mp4",
     full: "videos/leeto-no-idea.mp4",
-    start: 0,
+    start: 2,
     credits: [
       ["Director", "Nash Browin"],
     ],
@@ -107,7 +107,7 @@ window.PROJECTS = [
     description: "Music video for Leeto.",
     preview: "videos/leeto-youhoo-preview.mp4",
     full: "videos/leeto-youhoo.mp4",
-    start: 0,
+    start: 2,
     credits: [
       ["Director", "Nash Browin"],
     ],

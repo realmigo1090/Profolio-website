@@ -28,7 +28,7 @@ Then open http://localhost:5173.
 
 Add or remove entries and the carousel, counter and nav "Works (06)" update automatically.
 
-**Hero reel, services clips, contact video:** search `index.html` for `mixkit.co` and replace those URLs with your files in `videos/`.
+**Hero reel, services clips, contact video:** these are files in `videos/` (`hero-reel.mp4`, `service-*.mp4`, `contact-bg.mp4`, `avatar-*.mp4`). Swap a file or point `index.html` at a new one.
 
 **Text:** the headline, about paragraph, services, testimonials and contact email are all plain text in `index.html`.
 
@@ -40,4 +40,4 @@ Add or remove entries and the carousel, counter and nav "Works (06)" update auto
 - Keep the hero reel short (10–20 s) and loopable; it autoplays muted.
 - On phones there's no hover, so preview clips play automatically when they scroll into view.
 
-The placeholder clips are free stock footage from mixkit.co. Replace them before launch.
+GitHub Pages limits files to 100 MB each and the whole site to 1 GB, so keep full videos at 1080p around 4-5 Mbps.

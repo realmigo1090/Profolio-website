@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://assets.mixkit.co" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -26,7 +25,6 @@
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#works">Works <span class="nav__count">(<span data-works-count>06</span>)</span></a>
-        <a href="#testimonials">Testimonials</a>
       </nav>
       <a href="#contact" class="pill pill--outline nav__cta">Contact me</a>
       <button class="nav__menu-btn" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
@@ -37,7 +35,6 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#works">Works</a>
-    <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -47,7 +44,7 @@
     <section class="hero">
       <!-- Hero reel: swap the src for Nash's showreel (keep it short, muted, ~10–20s loop) -->
       <video class="hero__video" autoplay muted loop playsinline preload="auto"
-             src="https://assets.mixkit.co/videos/36684/36684-720.mp4"></video>
+             src="videos/hero-reel.mp4"></video>
       <div class="hero__shade"></div>
 
       <div class="hero__inner container">
@@ -57,7 +54,7 @@
 
         <div class="hero__aside">
           <div class="avatars">
-            <span class="avatar avatar--video"><video muted playsinline loop autoplay preload="metadata" src="https://assets.mixkit.co/videos/13013/13013-360.mp4#t=1"></video></span>
+            <span class="avatar avatar--video"><video muted playsinline loop autoplay preload="metadata" src="videos/avatar-hero.mp4"></video></span>
             <span class="avatar avatar--purple">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c.6 5.2 4.8 9.4 10 10-5.2.6-9.4 4.8-10 10-.6-5.2-4.8-9.4-10-10 5.2-.6 9.4-4.8 10-10z"/></svg>
             </span>
@@ -114,7 +111,7 @@
             <span class="avatar avatar--purple">
               <svg viewBox="0 0 100 100" aria-hidden="true"><g><rect x="42" y="10" width="16" height="80" rx="8"/><rect x="42" y="10" width="16" height="80" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="10" width="16" height="80" rx="8" transform="rotate(-60 50 50)"/></g></svg>
             </span>
-            <span class="avatar avatar--video"><video muted playsinline preload="metadata" src="https://assets.mixkit.co/videos/33215/33215-360.mp4#t=1"></video></span>
+            <span class="avatar avatar--video"><video muted playsinline preload="metadata" src="videos/avatar-stat.mp4#t=0.5"></video></span>
           </div>
           <p class="label">VIEWS ON<br />MY VIDEOS</p>
         </div>
@@ -172,10 +169,9 @@
           <div class="service__body"><div class="service__body-inner">
             <div class="tags"><span class="tag">MUSIC VIDEOS</span><span class="tag">PERFORMANCE</span><span class="tag">NARRATIVE</span><span class="tag">LIVE SESSIONS</span></div>
             <div class="service__media" data-hover-video data-open-project="1" data-cursor="play">
-              <video muted playsinline loop preload="none" data-src="https://assets.mixkit.co/videos/51317/51317-720.mp4#t=1"></video>
+              <video muted playsinline loop preload="none" data-src="videos/service-directing.mp4#t=0.1"></video>
               <span class="pill pill--lime pill--sm">View more <i class="arrow"></i></span>
             </div>
-            <p class="service__stat"><strong>8</strong><span>Years<br />shooting</span></p>
           </div></div>
         </li>
         <li class="service">
@@ -189,7 +185,6 @@
               <video muted playsinline loop preload="none" data-src="videos/nnw-observance.mp4#t=0.1"></video>
               <span class="pill pill--lime pill--sm">View more <i class="arrow"></i></span>
             </div>
-            <p class="service__stat"><strong>100+</strong><span>Edits<br />delivered</span></p>
           </div></div>
         </li>
         <li class="service">
@@ -198,12 +193,11 @@
             <span class="service__desc">DP on my own projects and for other directors. Handheld, low light, whatever the room allows.</span>
           </button>
           <div class="service__body"><div class="service__body-inner">
-            <div class="tags"><span class="tag">DIRECTOR OF PHOTOGRAPHY</span><span class="tag">LOW LIGHT</span><span class="tag">HANDHELD</span><span class="tag">16MM</span></div>
+            <div class="tags"><span class="tag">DIRECTOR OF PHOTOGRAPHY</span><span class="tag">LOW LIGHT</span><span class="tag">HANDHELD</span></div>
             <div class="service__media" data-hover-video data-open-project="5" data-cursor="play">
               <video muted playsinline loop preload="none" data-src="videos/native-dc-stickers.mp4#t=0.1"></video>
               <span class="pill pill--lime pill--sm">View more <i class="arrow"></i></span>
             </div>
-            <p class="service__stat"><strong>S16</strong><span>Film and<br />digital</span></p>
           </div></div>
         </li>
         <li class="service">
@@ -214,10 +208,9 @@
           <div class="service__body"><div class="service__body-inner">
             <div class="tags"><span class="tag">LIVE VISUALS</span><span class="tag">VISUALIZERS</span><span class="tag">COLOR GRADE</span><span class="tag">DELIVERY</span></div>
             <div class="service__media" data-hover-video data-open-project="2" data-cursor="play">
-              <video muted playsinline loop preload="none" data-src="https://assets.mixkit.co/videos/35332/35332-720.mp4#t=1"></video>
+              <video muted playsinline loop preload="none" data-src="videos/service-visuals.mp4#t=0.1"></video>
               <span class="pill pill--lime pill--sm">View more <i class="arrow"></i></span>
             </div>
-            <p class="service__stat"><strong>30+</strong><span>Live sets<br />with visuals</span></p>
           </div></div>
         </li>
       </ul>
@@ -245,45 +238,6 @@
       </div>
     </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
-    <section class="testimonials container" id="testimonials">
-      <div class="testimonials__side">
-        <svg class="quote-mark" viewBox="0 0 64 48" aria-hidden="true">
-          <path d="M0 22C0 9 7 2 19 0l2 6c-6 2-9 6-9 12h9v24H0V22zm34 0C34 9 41 2 53 0l2 6c-6 2-9 6-9 12h9v24H34V22z"/>
-        </svg>
-        <p class="label">[ 04 —<br />TESTIMONIALS ]</p>
-        <div class="avatars testimonials__avatars">
-          <span class="avatar avatar--purple">
-            <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 92 M50 50 L14 28 M50 50 L86 28" stroke-width="20" stroke-linecap="round" fill="none"/></svg>
-          </span>
-          <span class="avatar avatar--video"><video muted playsinline preload="metadata" data-testimonial-avatar src="https://assets.mixkit.co/videos/49033/49033-360.mp4#t=1"></video></span>
-        </div>
-      </div>
-
-      <div class="testimonials__main">
-        <!-- Edit quotes here. <em> = the white lead-in, the rest renders grey -->
-        <div class="testimonial is-active">
-          <blockquote class="testimonial__quote"><em>“Nash gets the music before he gets the camera out.</em> That's why the videos actually sound like the songs.”</blockquote>
-          <footer><strong>Kilo Juniper</strong><span>Artist</span></footer>
-        </div>
-        <div class="testimonial">
-          <blockquote class="testimonial__quote"><em>“Small crew, no ego,</em> and he'll stay till 4am if the shot isn't there yet.”</blockquote>
-          <footer><strong>Dani Reyes</strong><span>Promoter, Low Ceiling</span></footer>
-        </div>
-        <div class="testimonial">
-          <blockquote class="testimonial__quote"><em>“The first cut was the one we put out.</em> That's never happened to me before.”</blockquote>
-          <footer><strong>Moira Selk</strong><span>Producer &amp; DJ</span></footer>
-        </div>
-        <div class="testimonials__nav">
-          <p class="label"><span data-t-current>01</span> — <span data-t-total>03</span></p>
-          <div class="works__arrows">
-            <button class="circle-btn" data-t-prev aria-label="Previous testimonial"><i class="arrow arrow--left"></i></button>
-            <button class="circle-btn circle-btn--light" data-t-next aria-label="Next testimonial"><i class="arrow arrow--right"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ MARQUEE: VALUES ============ -->
     <div class="marquee marquee--md" aria-hidden="true">
       <div class="marquee__track">
@@ -297,7 +251,7 @@
 
     <!-- ============ CONTACT / FOOTER ============ -->
     <section class="contact" id="contact">
-      <video class="contact__video" muted playsinline loop preload="none" data-src="https://assets.mixkit.co/videos/3925/3925-1080.mp4#t=1" data-autoplay-inview></video>
+      <video class="contact__video" muted playsinline loop preload="none" data-src="videos/contact-bg.mp4#t=0.1" data-autoplay-inview></video>
       <div class="contact__shade"></div>
 
       <div class="contact__inner container">
