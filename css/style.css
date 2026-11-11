@@ -315,7 +315,7 @@ img, svg { display: block; }
   letter-spacing: -0.048em;
   font-weight: 500;
 }
-.hero__title .line { display: block; overflow: hidden; padding-bottom: 0.07em; margin-bottom: -0.07em; }
+.hero__title .line { display: block; overflow: hidden; padding-bottom: 0.2em; margin-bottom: -0.2em; }
 .hero__title .line > span { display: block; }
 .js .hero__title .line > span { transform: translateY(108%); transition: transform 1.3s var(--ease); }
 .js .is-loaded .hero__title .line > span { transform: none; }
