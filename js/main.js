@@ -454,7 +454,7 @@
   };
   const openFilm = (el) => {
     const d = el.dataset;
-    openProject({ title: d.filmTitle, client: d.filmClient, category: d.filmCategory, full: d.filmSrc, credits: [["Director", "Nash Browin"]] });
+    openProject({ title: d.filmTitle, client: d.filmClient, category: d.filmCategory, full: d.filmSrc, credits: [[d.filmRole || "Director", "Nash Browin"]] });
   };
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-open-project]");
