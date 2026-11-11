@@ -193,8 +193,8 @@ img, svg { display: block; }
 .nav.is-hidden { transform: translateY(-100%); }
 
 .nav__logo { display: block; }
-.nav__logo img { display: block; height: 34px; width: auto; }
-@media (max-width: 560px) { .nav__logo img { height: 28px; } }
+.nav__logo img { display: block; height: 64px; width: auto; }
+@media (max-width: 560px) { .nav__logo img { height: 52px; } }
 .nav__links {
   position: absolute;
   left: 50%;
@@ -285,11 +285,11 @@ img, svg { display: block; }
   padding-bottom: clamp(40px, 7vh, 88px);
 }
 
-.hero__mark { width: clamp(150px, 16vw, 260px); opacity: 0.94; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45)); }
+.hero__mark { width: clamp(200px, 22vw, 340px); filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.7)); }
 .hero__mark img { width: 100%; height: auto; animation: cherub-float 7s ease-in-out infinite; }
 @keyframes cherub-float {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(6px, -10px) rotate(-1.5deg); }
+  50% { transform: translateY(-8px); }
 }
 
 .hero__aside {
@@ -789,7 +789,7 @@ img, svg { display: block; }
   padding-bottom: clamp(20px, 2.4vw, 40px);
   pointer-events: none;
 }
-.wordmark img { display: block; width: 100%; height: auto; }
+.wordmark img { display: block; width: min(640px, 80vw); height: auto; margin-inline: auto; }
 
 /* =====================================================================
    LIGHTBOX
