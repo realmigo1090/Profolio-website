@@ -781,9 +781,9 @@ img, svg { display: block; }
   z-index: 2;
   margin-top: clamp(24px, 3vw, 48px);
   padding-inline: var(--pad);
-  margin-bottom: -0.2em;
+  padding-bottom: 0.06em;
   font-size: 18vw;
-  line-height: 0.8;
+  line-height: 0.86;
   letter-spacing: -0.065em;
   font-weight: 500;
   color: #ebeaf3;
