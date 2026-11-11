@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=2026111104" />
+  <link rel="stylesheet" href="css/style.css?v=2026111105" />
 </head>
 <body>
 
@@ -78,14 +78,31 @@
     <!-- ============ ABOUT ============ -->
     <section class="about container" id="about">
       <div class="about__side">
-        <svg class="asterisk" viewBox="0 0 100 100" aria-hidden="true">
-          <g><rect x="44" y="6" width="12" height="88" rx="6"/><rect x="44" y="6" width="12" height="88" rx="6" transform="rotate(60 50 50)"/><rect x="44" y="6" width="12" height="88" rx="6" transform="rotate(-60 50 50)"/></g>
-        </svg>
-        <p class="label">[ 01 —<br />ABOUT ]</p>
+        <div class="about__head">
+          <p class="label">[ 01 — ABOUT ]</p>
+          <svg class="asterisk" viewBox="0 0 100 100" aria-hidden="true"><use href="#ast"/></svg>
+        </div>
+        <figure class="about__photo">
+          <img src="img/nash-browin.jpg" alt="Nash Browin" width="900" height="900" loading="lazy" />
+        </figure>
       </div>
-      <p class="about__text" data-scroll-text>
-        I make music videos, visuals and short films with artists from the underground hip hop and electronic scenes. Small crews, real places, and edits that follow the track. Over 20 million views and counting.
-      </p>
+      <div class="about__main">
+        <p class="about__text" data-scroll-text>
+          Nash Browin is a Creative Director and filmmaker blending raw storytelling with modern, cinematic visuals.
+        </p>
+        <p class="about__body">
+          Working as a one-man team, he directs, shoots, edits and builds the motion graphics himself, taking projects
+          from the first concept to the final export. A documentary-style instinct for pacing lets him turn real moments
+          into stories people feel, whether it's an on-the-go vlog cut, a music video or branded content with intentional
+          framing. His edits are sharp and current, using rhythm, mood and narrative structure to pull viewers in.
+          Based in the DMV, his process is rooted in hustle, innovation and an eye for culture in motion, with over
+          20 million views and counting.
+        </p>
+        <ul class="about__skills" aria-label="Skills">
+          <li class="tag">Creative Direction</li><li class="tag">Directing</li><li class="tag">Cinematography</li>
+          <li class="tag">Editing</li><li class="tag">Motion Graphics</li><li class="tag">Storytelling</li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============ BENTO ============ -->
@@ -314,7 +331,7 @@
   </svg>
 
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/content.js?v=2026111104"></script>
-  <script src="js/main.js?v=2026111104"></script>
+  <script src="js/content.js?v=2026111105"></script>
+  <script src="js/main.js?v=2026111105"></script>
 </body>
 </html>
