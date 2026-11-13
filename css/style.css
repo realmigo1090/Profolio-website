@@ -597,6 +597,104 @@ img, svg { display: block; }
 .service__stat span { font-size: 10.5px; line-height: 1.3; color: var(--soft); }
 
 /* =====================================================================
+   AI WORK
+   ===================================================================== */
+
+.ai { padding-top: clamp(24px, 3vw, 48px); padding-bottom: clamp(70px, 9vw, 130px); scroll-margin-top: calc(var(--nav-h) + 16px); }
+.ai[hidden] { display: none; }
+.ai__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(28px, 3.4vw, 48px);
+}
+.ai__intro { max-width: 440px; }
+.ai__lead { font-size: 15px; line-height: 1.55; color: var(--soft); text-wrap: pretty; }
+.ai__tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.ai__tools[hidden] { display: none; }
+.ai__tools .tag { background: transparent; color: var(--text); border: 1px solid rgba(155, 123, 242, 0.55); }
+
+.ai__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 2.4vw, 36px) var(--gap); }
+.ai-card { cursor: pointer; outline: none; }
+.ai-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 2fr 1fr; gap: var(--gap); align-items: end; }
+.ai-card--featured .ai-card__meta { padding: 0 0 6px; }
+.ai-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  isolation: isolate;
+  background: #0b0a10;
+  box-shadow: inset 0 0 0 1px rgba(155, 123, 242, 0.18);
+  transition: box-shadow 0.5s var(--ease);
+}
+.ai-card__media video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.86);
+  transition: transform 1.4s var(--ease), filter 0.6s var(--ease);
+}
+.ai-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.6) 100%);
+}
+.ai-card:hover .ai-card__media, .ai-card:focus-visible .ai-card__media { box-shadow: inset 0 0 0 1px rgba(155, 123, 242, 0.7), 0 0 40px -12px rgba(155, 123, 242, 0.55); }
+.ai-card:hover video, .ai-card:hover .slide__yt img { transform: scale(1.035); filter: brightness(1); }
+.ai-card:focus-visible .ai-card__media { outline: 2px solid var(--lime); outline-offset: 3px; }
+.ai-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 5px 9px 4px;
+  border-radius: 999px;
+  background: var(--purple);
+  color: #0a0812;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.ai-card .slide__play { position: absolute; top: 12px; right: 12px; z-index: 1; }
+.ai-card__tools { position: absolute; left: 12px; bottom: 12px; z-index: 1; display: flex; flex-wrap: wrap; gap: 5px; }
+.ai-card__tool { background: rgba(10, 8, 18, 0.62); color: #fff; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.ai-card__meta { padding-top: 12px; }
+.ai-card__title { font-size: 15px; font-weight: 500; line-height: 1.3; letter-spacing: -0.01em; }
+.ai-card--featured .ai-card__title { font-size: clamp(20px, 1.9vw, 28px); letter-spacing: -0.02em; }
+.ai-card--featured .ai-card__note { font-size: 14px; }
+.ai-card__sub { margin-top: 4px; font-size: 12px; color: var(--soft); }
+.ai-card__note { margin-top: 8px; max-width: 52ch; font-size: 13px; line-height: 1.5; color: var(--soft); }
+
+@media (max-width: 900px) {
+  .ai__grid { grid-template-columns: repeat(2, 1fr); }
+  .ai-card--featured { display: block; }
+  .ai-card--featured .ai-card__meta { padding-top: 12px; }
+}
+@media (max-width: 560px) {
+  .ai__grid {
+    display: flex;
+    gap: 12px;
+    margin-inline: calc(var(--pad) * -1);
+    padding-inline: var(--pad);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+  }
+  .ai__grid::-webkit-scrollbar { display: none; }
+  .ai-card { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+/* =====================================================================
    VIRAL WORK
    ===================================================================== */
 

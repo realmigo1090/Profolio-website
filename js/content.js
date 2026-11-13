@@ -299,3 +299,29 @@ window.VIRAL = [
   { title: "TOMFOOLERY!", artist: "Quadeca x EGOVERT x KIL x Moxas", youtube: "9k4azasazZ8", date: "2019-08-01", views: 1258788, start: 20 },
   { title: "HEY!", artist: "EGOVERT & KIL", youtube: "fY7imWULdwg", date: "2019-05-23", views: 2334699, start: 20 },
 ];
+
+/* =====================================================================
+   AI WORK — the "[ 02 — AI ]" section
+   ---------------------------------------------------------------------
+   The section (and its "AI" link in the menu) only shows once this list
+   has at least one entry. Newest first. Each entry:
+
+   title    : name of the piece
+   client   : artist / brand (or "Personal" for your own experiments)
+   year     : 2026
+   note     : one line on what the AI did in this piece
+   tools    : ["Tool name", ...]  shown as small tags on the card
+   youtube  : a YouTube video ID  (plays muted on hover, opens on click)
+     — or —
+   preview  : short muted clip for the card (videos/ai-<name>-preview.mp4)
+   full     : what opens on click (videos/ai-<name>.mp4 or a YouTube/Vimeo link)
+   poster   : (optional) still image shown before the clip loads
+   start    : (optional) second the YouTube preview starts from
+   role     : (optional) your credit, default "Director / Editor"
+   featured : (optional) true = big card across the full row
+   ===================================================================== */
+
+window.AI_WORK = [];
+
+// Tools you use, shown as tags under the intro (leave empty to hide the row)
+window.AI_TOOLS = [];

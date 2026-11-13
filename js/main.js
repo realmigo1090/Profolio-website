@@ -308,6 +308,48 @@
     if (totalEl) totalEl.textContent = `${fmtViews(total)} views across these ${VIRAL.length} videos`;
   }
 
+  /* ---------------- AI work grid ---------------- */
+  const AI_WORK = window.AI_WORK || [];
+  const AI_TOOLS = window.AI_TOOLS || [];
+  const aiSection = $("#ai");
+  const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  if (aiSection && AI_WORK.length) {
+    aiSection.hidden = false;
+    const toolsEl = $("[data-ai-tools]", aiSection);
+    if (toolsEl && AI_TOOLS.length) {
+      toolsEl.innerHTML = AI_TOOLS.map((t) => `<span class="tag">${esc(t)}</span>`).join("");
+      toolsEl.hidden = false;
+    }
+    const grid = $("[data-ai-grid]", aiSection);
+    grid.innerHTML = AI_WORK.map((a, i) => {
+      const media = a.youtube
+        ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}">
+             <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" alt="" loading="lazy" />
+             <div class="slide__yt-player"></div>
+           </div>`
+        : `<video muted playsinline loop preload="none"${a.poster ? ` poster="${esc(a.poster)}"` : ""} data-src="${esc(a.preview || a.full)}${a.poster ? "" : "#t=0.1"}"></video>`;
+      const tools = (a.tools || []).slice(0, 3).map((t) => `<span class="tag ai-card__tool">${esc(t)}</span>`).join("");
+      return `
+      <article class="ai-card${a.featured ? " ai-card--featured" : ""}" data-open-ai="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${esc(a.title)}">
+        <div class="ai-card__media">
+          ${media}
+          <span class="ai-card__badge">AI</span>
+          <span class="slide__play" aria-hidden="true"></span>
+          ${tools ? `<div class="ai-card__tools">${tools}</div>` : ""}
+        </div>
+        <div class="ai-card__meta">
+          <h3 class="ai-card__title">${esc(a.title)}</h3>
+          <p class="ai-card__sub">${esc([a.client, a.year].filter(Boolean).join(" · "))}</p>
+          ${a.note ? `<p class="ai-card__note">${esc(a.note)}</p>` : ""}
+        </div>
+      </article>`;
+    }).join("");
+    watchLazy(grid);
+    $$(".ai-card", grid).forEach((el) => ($(".slide__yt", el) ? bindHoverYT(el) : bindHoverVideo(el)));
+  } else {
+    $$('a[href="#ai"]').forEach((a) => a.remove());
+  }
+
   if (track && PROJECTS.length) {
     track.innerHTML = PROJECTS.map(slideHTML).join("");
     watchLazy(track);
@@ -453,6 +495,16 @@
       description: `${fmtViews(v.views)} views on YouTube.`, full: `https://youtu.be/${v.youtube}`, credits: [],
     });
   };
+  const openAI = (n) => {
+    const a = AI_WORK[n];
+    if (!a) return;
+    const credits = [[a.role || "Director / Editor", "Nash Browin"]];
+    if (a.tools && a.tools.length) credits.push(["AI tools", a.tools.join(", ")]);
+    openProject({
+      title: a.title, client: a.client || "", category: "AI", year: a.year,
+      description: a.note || "", full: a.youtube ? `https://youtu.be/${a.youtube}` : a.full || a.preview, credits,
+    });
+  };
   const openFilm = (el) => {
     const d = el.dataset;
     openProject({ title: d.filmTitle, client: d.filmClient, category: d.filmCategory, full: d.filmSrc, credits: [[d.filmRole || "Director", "Nash Browin"]] });
@@ -464,6 +516,8 @@
     if (vt) openViral(Number(vt.dataset.openViral));
     const ft = e.target.closest("[data-open-film]");
     if (ft) openFilm(ft);
+    const at = e.target.closest("[data-open-ai]");
+    if (at) openAI(Number(at.dataset.openAi));
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeProject(); closeMenu(); }
@@ -474,6 +528,8 @@
       if (vt) openViral(Number(vt.dataset.openViral));
       const ft = e.target.closest && e.target.closest("[data-open-film]");
       if (ft) openFilm(ft);
+      const at = e.target.closest && e.target.closest("[data-open-ai]");
+      if (at) openAI(Number(at.dataset.openAi));
     }
   });
   $(".lightbox__close", lb).addEventListener("click", closeProject);
