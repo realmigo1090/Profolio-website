@@ -543,6 +543,8 @@ img, svg { display: block; }
   transition-delay: 0.12s;
 }
 .service__media video { width: 100%; height: 100%; object-fit: cover; }
+.service__media--yt { isolation: isolate; background: #000; }
+.service__media--yt .slide__yt img { filter: brightness(0.9); }
 .service__media .pill {
   position: absolute;
   left: 50%;

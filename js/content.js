@@ -260,10 +260,10 @@ window.PROJECTS = [
   {
     id: "bri-day-dreams",
     title: "Day Dreams",
-    client: "Bri",
-    date: "",
+    client: "Bri Miller",
+    date: "2023-05-05",
     category: "Music Video",
-    description: "Music video for Bri.",
+    description: "Music video for Bri Miller.",
     preview: "videos/bri-day-dreams-preview.mp4",
     full: "videos/bri-day-dreams.mp4",
     start: 0,

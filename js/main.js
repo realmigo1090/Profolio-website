@@ -192,6 +192,9 @@
     }
   };
 
+  // service rows that preview a YouTube video instead of a local clip
+  $$("[data-hover-yt]").forEach(bindHoverYT);
+
   /* ---------------- hero intro + reveals ---------------- */
   const markLoaded = () => document.body.classList.add("is-loaded");
   if (document.readyState === "complete") requestAnimationFrame(markLoaded);
