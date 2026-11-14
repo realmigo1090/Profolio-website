@@ -156,6 +156,7 @@
     const wrap = $(".slide__yt", el);
     const id = wrap.dataset.yt;
     const start = parseInt(wrap.dataset.start, 10) || 0;
+    const end = parseInt(wrap.dataset.end, 10) || 0; // optional: loop just start → end
     let player = null, want = false;
     const play = () => {
       want = true;
@@ -165,8 +166,9 @@
       loadYT().then((YT) => {
         player = new YT.Player($(".slide__yt-player", wrap), {
           videoId: id,
-          playerVars: { autoplay: 1, mute: 1, controls: 0, start, playsinline: 1, rel: 0, modestbranding: 1,
-                        loop: 1, playlist: id, disablekb: 1, fs: 0, iv_load_policy: 3, cc_load_policy: 0 },
+          playerVars: Object.assign({ autoplay: 1, mute: 1, controls: 0, start, playsinline: 1, rel: 0, modestbranding: 1,
+                        disablekb: 1, fs: 0, iv_load_policy: 3, cc_load_policy: 0 },
+                        end ? { end } : { loop: 1, playlist: id }),
           events: {
             onReady: (e) => { fitYT(wrap); e.target.mute(); want ? e.target.playVideo() : e.target.pauseVideo(); },
             onStateChange: (e) => {
@@ -323,7 +325,7 @@
     const grid = $("[data-ai-grid]", aiSection);
     grid.innerHTML = AI_WORK.map((a, i) => {
       const media = a.youtube
-        ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}">
+        ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}"${a.end ? ` data-end="${a.end}"` : ""}>
              <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" alt="" loading="lazy" />
              <div class="slide__yt-player"></div>
            </div>`
@@ -450,7 +452,8 @@
     const vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
     if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1&title=0&byline=0&portrait=0`;
     const yt = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
-    if (yt) return `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0&modestbranding=1`;
+    const t = url.match(/[?&](?:t|start)=(\d+)/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0&modestbranding=1${t ? `&start=${t[1]}` : ""}`;
     return url;
   };
 
@@ -502,7 +505,7 @@
     if (a.tools && a.tools.length) credits.push(["AI tools", a.tools.join(", ")]);
     openProject({
       title: a.title, client: a.client || "", category: "AI", year: a.year,
-      description: a.note || "", full: a.youtube ? `https://youtu.be/${a.youtube}` : a.full || a.preview, credits,
+      description: a.note || "", full: a.youtube ? `https://youtu.be/${a.youtube}${a.start ? `?t=${a.start}` : ""}` : a.full || a.preview, credits,
     });
   };
   const openFilm = (el) => {

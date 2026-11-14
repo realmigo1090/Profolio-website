@@ -316,12 +316,75 @@ window.VIRAL = [
    preview  : short muted clip for the card (videos/ai-<name>-preview.mp4)
    full     : what opens on click (videos/ai-<name>.mp4 or a YouTube/Vimeo link)
    poster   : (optional) still image shown before the clip loads
-   start    : (optional) second the YouTube preview starts from
+   start    : (optional) second the YouTube preview starts from (also where the full video opens)
+   end      : (optional) second the YouTube preview loops back at, so it only plays the AI part
    role     : (optional) your credit, default "Director / Editor"
    featured : (optional) true = big card across the full row
    ===================================================================== */
 
-window.AI_WORK = [];
+window.AI_WORK = [
+  {
+    title: "Dystopian Reality",
+    client: "Mageot",
+    year: 2026,
+    note: "Collection trailer and my most recent piece, with AI built into the edit.",
+    tools: [],
+    preview: "videos/ai-mageot-preview.mp4",
+    poster: "img/ai-mageot-poster.jpg",
+    full: "videos/mageot-dystopian-reality.mp4",
+    featured: true,
+  },
+  {
+    title: "FaceTime (Remix) — Animated Video",
+    client: "Shay $tax ft. Riff Raff",
+    year: 2026,
+    note: "AI shots at 0:07–0:12. The preview plays that part.",
+    tools: [],
+    youtube: "5LWyY0qt-7k",
+    start: 7,
+    end: 12,
+  },
+  {
+    title: "Get In With Me",
+    client: "Yoshi Yin",
+    year: 2026,
+    note: "AI shots at 0:57–1:05. The preview plays that part.",
+    tools: [],
+    youtube: "SgyiucBxxF0",
+    start: 57,
+    end: 65,
+  },
+  {
+    title: "FaceTime (Remix) — Lyric Video",
+    client: "Shay $tax ft. Riff Raff",
+    year: 2026,
+    note: "AI shots at 0:53–1:03. The preview plays that part.",
+    tools: [],
+    youtube: "U61LX3ujfkk",
+    start: 53,
+    end: 63,
+  },
+  {
+    title: "Paris",
+    client: "Shay $tax",
+    year: 2026,
+    note: "AI shots at 0:13–0:20. The preview plays that part.",
+    tools: [],
+    youtube: "SkIAJFp8ROA",
+    start: 13,
+    end: 20,
+  },
+  {
+    title: "Fly Away",
+    client: "Yoshi Yin ft. Joozzi",
+    year: 2026,
+    note: "AI shots at 0:06–0:16. The preview plays that part.",
+    tools: [],
+    youtube: "Dpgwr-HLxTM",
+    start: 6,
+    end: 16,
+  },
+];
 
 // Tools you use, shown as tags under the intro (leave empty to hide the row)
 window.AI_TOOLS = [];
