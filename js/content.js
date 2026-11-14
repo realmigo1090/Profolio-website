@@ -341,7 +341,7 @@ window.AI_WORK = [
     title: "I h8 mY Anxiety",
     client: "Jahzae Rose",
     year: 2025,
-    note: "AI shots made with Runway at 0:56–1:06. The preview plays that part.",
+    note: "Claymation made with Runway, cut in with the live action throughout the video. The preview plays 0:56–1:06.",
     tools: ["Runway"],
     youtube: "0jehh_SNCMk",
     start: 56,
