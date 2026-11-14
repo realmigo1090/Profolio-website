@@ -337,6 +337,16 @@ window.AI_WORK = [
     featured: true,
   },
   {
+    title: "I h8 mY Anxiety",
+    client: "Jahzae Rose",
+    year: 2025,
+    note: "AI shots made with Runway at 0:56–1:06. The preview plays that part.",
+    tools: ["Runway"],
+    youtube: "0jehh_SNCMk",
+    start: 56,
+    end: 66,
+  },
+  {
     title: "FaceTime (Remix) — Animated Video",
     client: "Shay $tax ft. Riff Raff",
     year: 2026,
@@ -386,16 +396,6 @@ window.AI_WORK = [
     start: 6,
     end: 16,
   },
-  {
-    title: "I h8 mY Anxiety",
-    client: "Jahzae Rose",
-    year: 2025,
-    note: "AI shots at 0:56–1:06. The preview plays that part.",
-    tools: [],
-    youtube: "0jehh_SNCMk",
-    start: 56,
-    end: 66,
-  },
 ];
 
 // Motion graphics where you used AI (same fields as above)
@@ -423,4 +423,4 @@ window.AI_MOTION = [
 ];
 
 // Tools you use, shown as tags under the intro (leave empty to hide the row)
-window.AI_TOOLS = [];
+window.AI_TOOLS = ["Runway"];
