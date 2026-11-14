@@ -258,7 +258,7 @@
     <article class="slide">
       <div class="slide__media" data-hover-video data-open-project="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${p.title}">
         ${p.youtube
-          ? `<div class="slide__yt" data-yt="${p.youtube}" data-start="${p.start ?? 30}"><img src="https://i.ytimg.com/vi/${p.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${p.youtube}/hqdefault.jpg'" alt="" loading="lazy" /><div class="slide__yt-player"></div></div>`
+          ? `<div class="slide__yt" data-yt="${p.youtube}" data-start="${p.start ?? 30}"><img src="https://i.ytimg.com/vi/${p.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${p.youtube}/hqdefault.jpg'" onload="if(this.naturalWidth<=120&&!this.dataset.fb){this.dataset.fb=1;this.src='https://i.ytimg.com/vi/${p.youtube}/hqdefault.jpg'}" alt="" loading="lazy" /><div class="slide__yt-player"></div></div>`
           : `<video muted playsinline loop preload="metadata" data-src="${p.preview}#t=${p.start ?? 1}"></video>`}
         <div class="slide__top">
           <span class="tag">${p.category.toUpperCase()}</span>
@@ -293,7 +293,7 @@
       <article class="vcard" data-open-viral="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${v.title}">
         <div class="vcard__media">
           <div class="slide__yt" data-yt="${v.youtube}" data-start="${v.start ?? 20}">
-            <img src="https://i.ytimg.com/vi/${v.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'" alt="" loading="lazy" />
+            <img src="https://i.ytimg.com/vi/${v.youtube}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'" onload="if(this.naturalWidth<=120&&!this.dataset.fb){this.dataset.fb=1;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'}" alt="" loading="lazy" />
             <div class="slide__yt-player"></div>
           </div>
           <span class="tag vcard__views">${fmtViews(v.views)} views</span>
@@ -318,7 +318,7 @@
   const aiCardHTML = (a, key) => {
     const media = a.youtube
       ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}"${a.end ? ` data-end="${a.end}"` : ""}>
-           <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" alt="" loading="lazy" />
+           <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" onload="if(this.naturalWidth<=120&&!this.dataset.fb){this.dataset.fb=1;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'}" alt="" loading="lazy" />
            <div class="slide__yt-player"></div>
          </div>`
       : `<video muted playsinline loop preload="none"${a.poster ? ` poster="${esc(a.poster)}"` : ""} data-src="${esc(a.preview || a.full)}${a.poster ? "" : "#t=0.1"}"></video>`;
