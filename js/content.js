@@ -386,6 +386,16 @@ window.AI_WORK = [
     start: 6,
     end: 16,
   },
+  {
+    title: "I h8 mY Anxiety",
+    client: "Jahzae Rose",
+    year: 2025,
+    note: "AI shots at 0:56–1:06. The preview plays that part.",
+    tools: [],
+    youtube: "0jehh_SNCMk",
+    start: 56,
+    end: 66,
+  },
 ];
 
 // Motion graphics where you used AI (same fields as above)
