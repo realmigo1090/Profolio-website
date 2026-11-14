@@ -438,4 +438,4 @@ window.AI_MOTION = [
 ];
 
 // Tools you use, shown as tags under the intro (leave empty to hide the row)
-window.AI_TOOLS = ["Runway"];
+window.AI_TOOLS = ["Runway", "Higgsfield", "ArtCraft", "ChatGPT", "Claude"];
