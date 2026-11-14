@@ -311,7 +311,7 @@
   }
 
   /* ---------------- AI work grids (real footage + AI, motion graphics + AI) ---------------- */
-  const AI_LISTS = { footage: window.AI_WORK || [], motion: window.AI_MOTION || [] };
+  const AI_LISTS = { footage: window.AI_WORK || [], animation: window.AI_ANIMATION || [], motion: window.AI_MOTION || [] };
   const AI_TOOLS = window.AI_TOOLS || [];
   const aiSection = $("#ai");
   const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -338,7 +338,7 @@
         </div>
       </article>`;
   };
-  const anyAI = AI_LISTS.footage.length || AI_LISTS.motion.length;
+  const anyAI = Object.values(AI_LISTS).some((l) => l.length);
   if (aiSection && anyAI) {
     aiSection.hidden = false;
     const toolsEl = $("[data-ai-tools]", aiSection);
@@ -512,7 +512,7 @@
     const credits = [[a.role || "Director / Editor", "Nash Browin"]];
     if (a.tools && a.tools.length) credits.push(["AI tools", a.tools.join(", ")]);
     openProject({
-      title: a.title, client: a.client || "", category: group === "motion" ? "Motion Graphics + AI" : "AI", year: a.year,
+      title: a.title, client: a.client || "", category: { motion: "Motion Graphics + AI", animation: "Animation + AI" }[group] || "AI", year: a.year,
       description: a.note || "", full: a.youtube ? `https://youtu.be/${a.youtube}${a.start ? `?t=${a.start}` : ""}` : a.full || a.preview, credits,
     });
   };

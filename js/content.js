@@ -302,8 +302,9 @@ window.VIRAL = [
 
 /* =====================================================================
    AI WORK — the "[ 02 — AI ]" section, in two groups:
-     window.AI_WORK   → 01  Real footage + AI
-     window.AI_MOTION → 02  Motion graphics + AI
+     window.AI_WORK      → 01  Real footage + AI
+     window.AI_ANIMATION → 02  Animation + AI
+     window.AI_MOTION    → 03  Motion graphics + AI
    ---------------------------------------------------------------------
    Each group only shows once its list has at least one entry, and the
    section (and its "AI" menu link) once either does. Newest first. Each entry:
@@ -347,16 +348,6 @@ window.AI_WORK = [
     end: 66,
   },
   {
-    title: "FaceTime (Remix) — Animated Video",
-    client: "Shay $tax ft. Riff Raff",
-    year: 2026,
-    note: "AI shots at 0:07–0:12. The preview plays that part.",
-    tools: [],
-    youtube: "5LWyY0qt-7k",
-    start: 7,
-    end: 12,
-  },
-  {
     title: "Get In With Me",
     client: "Yoshi Yin",
     year: 2026,
@@ -365,16 +356,6 @@ window.AI_WORK = [
     youtube: "SgyiucBxxF0",
     start: 57,
     end: 65,
-  },
-  {
-    title: "FaceTime (Remix) — Lyric Video",
-    client: "Shay $tax ft. Riff Raff",
-    year: 2026,
-    note: "AI shots at 0:53–1:03. The preview plays that part.",
-    tools: [],
-    youtube: "U61LX3ujfkk",
-    start: 53,
-    end: 63,
   },
   {
     title: "Paris",
@@ -395,6 +376,40 @@ window.AI_WORK = [
     youtube: "Dpgwr-HLxTM",
     start: 6,
     end: 16,
+  },
+  {
+    title: "Worried About Me",
+    client: "Yoshi Yin",
+    year: 2026,
+    note: "AI shots at 0:00–0:07. The preview plays that part.",
+    tools: [],
+    youtube: "b0_kmKiP2wc",
+    start: 0,
+    end: 7,
+  },
+];
+
+// Animation made with AI (same fields as above)
+window.AI_ANIMATION = [
+  {
+    title: "FaceTime (Remix) — Animated Video",
+    client: "Shay $tax ft. Riff Raff",
+    year: 2026,
+    note: "AI shots at 0:07–0:12. The preview plays that part.",
+    tools: [],
+    youtube: "5LWyY0qt-7k",
+    start: 7,
+    end: 12,
+  },
+  {
+    title: "FaceTime (Remix) — Lyric Video",
+    client: "Shay $tax ft. Riff Raff",
+    year: 2026,
+    note: "AI shots at 0:53–1:03. The preview plays that part.",
+    tools: [],
+    youtube: "U61LX3ujfkk",
+    start: 53,
+    end: 63,
   },
 ];
 
