@@ -616,6 +616,19 @@ img, svg { display: block; }
 .ai__tools[hidden] { display: none; }
 .ai__tools .tag { background: transparent; color: var(--text); border: 1px solid rgba(155, 123, 242, 0.55); }
 
+.ai__group + .ai__group { margin-top: clamp(56px, 7vw, 100px); }
+.ai__group[hidden] { display: none; }
+.ai__group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding-top: 18px;
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+  border-top: 1px solid var(--line);
+}
+.ai__group-num { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: var(--purple); }
+.ai__group-title { font-size: clamp(20px, 1.9vw, 28px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; }
+.ai__group-desc { margin-top: 6px; font-size: 13px; color: var(--soft); }
 .ai__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 2.4vw, 36px) var(--gap); }
 .ai-card { cursor: pointer; outline: none; }
 .ai-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 2fr 1fr; gap: var(--gap); align-items: end; }

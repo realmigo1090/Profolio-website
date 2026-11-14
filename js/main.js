@@ -310,29 +310,21 @@
     if (totalEl) totalEl.textContent = `${fmtViews(total)} views across these ${VIRAL.length} videos`;
   }
 
-  /* ---------------- AI work grid ---------------- */
-  const AI_WORK = window.AI_WORK || [];
+  /* ---------------- AI work grids (real footage + AI, motion graphics + AI) ---------------- */
+  const AI_LISTS = { footage: window.AI_WORK || [], motion: window.AI_MOTION || [] };
   const AI_TOOLS = window.AI_TOOLS || [];
   const aiSection = $("#ai");
   const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  if (aiSection && AI_WORK.length) {
-    aiSection.hidden = false;
-    const toolsEl = $("[data-ai-tools]", aiSection);
-    if (toolsEl && AI_TOOLS.length) {
-      toolsEl.innerHTML = AI_TOOLS.map((t) => `<span class="tag">${esc(t)}</span>`).join("");
-      toolsEl.hidden = false;
-    }
-    const grid = $("[data-ai-grid]", aiSection);
-    grid.innerHTML = AI_WORK.map((a, i) => {
-      const media = a.youtube
-        ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}"${a.end ? ` data-end="${a.end}"` : ""}>
-             <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" alt="" loading="lazy" />
-             <div class="slide__yt-player"></div>
-           </div>`
-        : `<video muted playsinline loop preload="none"${a.poster ? ` poster="${esc(a.poster)}"` : ""} data-src="${esc(a.preview || a.full)}${a.poster ? "" : "#t=0.1"}"></video>`;
-      const tools = (a.tools || []).slice(0, 3).map((t) => `<span class="tag ai-card__tool">${esc(t)}</span>`).join("");
-      return `
-      <article class="ai-card${a.featured ? " ai-card--featured" : ""}" data-open-ai="${i}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${esc(a.title)}">
+  const aiCardHTML = (a, key) => {
+    const media = a.youtube
+      ? `<div class="slide__yt" data-yt="${esc(a.youtube)}" data-start="${a.start ?? 0}"${a.end ? ` data-end="${a.end}"` : ""}>
+           <img src="https://i.ytimg.com/vi/${esc(a.youtube)}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(a.youtube)}/hqdefault.jpg'" alt="" loading="lazy" />
+           <div class="slide__yt-player"></div>
+         </div>`
+      : `<video muted playsinline loop preload="none"${a.poster ? ` poster="${esc(a.poster)}"` : ""} data-src="${esc(a.preview || a.full)}${a.poster ? "" : "#t=0.1"}"></video>`;
+    const tools = (a.tools || []).slice(0, 3).map((t) => `<span class="tag ai-card__tool">${esc(t)}</span>`).join("");
+    return `
+      <article class="ai-card${a.featured ? " ai-card--featured" : ""}" data-open-ai="${key}" data-cursor="play" role="button" tabindex="0" aria-label="Play ${esc(a.title)}">
         <div class="ai-card__media">
           ${media}
           <span class="ai-card__badge">AI</span>
@@ -345,9 +337,24 @@
           ${a.note ? `<p class="ai-card__note">${esc(a.note)}</p>` : ""}
         </div>
       </article>`;
-    }).join("");
-    watchLazy(grid);
-    $$(".ai-card", grid).forEach((el) => ($(".slide__yt", el) ? bindHoverYT(el) : bindHoverVideo(el)));
+  };
+  const anyAI = AI_LISTS.footage.length || AI_LISTS.motion.length;
+  if (aiSection && anyAI) {
+    aiSection.hidden = false;
+    const toolsEl = $("[data-ai-tools]", aiSection);
+    if (toolsEl && AI_TOOLS.length) {
+      toolsEl.innerHTML = AI_TOOLS.map((t) => `<span class="tag">${esc(t)}</span>`).join("");
+      toolsEl.hidden = false;
+    }
+    Object.entries(AI_LISTS).forEach(([group, list]) => {
+      const wrap = $(`[data-ai-group="${group}"]`, aiSection);
+      if (!wrap || !list.length) return;
+      wrap.hidden = false;
+      const grid = $(`[data-ai-grid="${group}"]`, wrap);
+      grid.innerHTML = list.map((a, i) => aiCardHTML(a, `${group}:${i}`)).join("");
+      watchLazy(grid);
+      $$(".ai-card", grid).forEach((el) => ($(".slide__yt", el) ? bindHoverYT(el) : bindHoverVideo(el)));
+    });
   } else {
     $$('a[href="#ai"]').forEach((a) => a.remove());
   }
@@ -498,13 +505,14 @@
       description: `${fmtViews(v.views)} views on YouTube.`, full: `https://youtu.be/${v.youtube}`, credits: [],
     });
   };
-  const openAI = (n) => {
-    const a = AI_WORK[n];
+  const openAI = (key) => {
+    const [group, n] = String(key).split(":");
+    const a = (AI_LISTS[group] || [])[Number(n)];
     if (!a) return;
     const credits = [[a.role || "Director / Editor", "Nash Browin"]];
     if (a.tools && a.tools.length) credits.push(["AI tools", a.tools.join(", ")]);
     openProject({
-      title: a.title, client: a.client || "", category: "AI", year: a.year,
+      title: a.title, client: a.client || "", category: group === "motion" ? "Motion Graphics + AI" : "AI", year: a.year,
       description: a.note || "", full: a.youtube ? `https://youtu.be/${a.youtube}${a.start ? `?t=${a.start}` : ""}` : a.full || a.preview, credits,
     });
   };
@@ -520,7 +528,7 @@
     const ft = e.target.closest("[data-open-film]");
     if (ft) openFilm(ft);
     const at = e.target.closest("[data-open-ai]");
-    if (at) openAI(Number(at.dataset.openAi));
+    if (at) openAI(at.dataset.openAi);
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") { closeProject(); closeMenu(); }
@@ -532,7 +540,7 @@
       const ft = e.target.closest && e.target.closest("[data-open-film]");
       if (ft) openFilm(ft);
       const at = e.target.closest && e.target.closest("[data-open-ai]");
-      if (at) openAI(Number(at.dataset.openAi));
+      if (at) openAI(at.dataset.openAi);
     }
   });
   $(".lightbox__close", lb).addEventListener("click", closeProject);

@@ -301,10 +301,12 @@ window.VIRAL = [
 ];
 
 /* =====================================================================
-   AI WORK — the "[ 02 — AI ]" section
+   AI WORK — the "[ 02 — AI ]" section, in two groups:
+     window.AI_WORK   → 01  Real footage + AI
+     window.AI_MOTION → 02  Motion graphics + AI
    ---------------------------------------------------------------------
-   The section (and its "AI" link in the menu) only shows once this list
-   has at least one entry. Newest first. Each entry:
+   Each group only shows once its list has at least one entry, and the
+   section (and its "AI" menu link) once either does. Newest first. Each entry:
 
    title    : name of the piece
    client   : artist / brand (or "Personal" for your own experiments)
@@ -383,6 +385,30 @@ window.AI_WORK = [
     youtube: "Dpgwr-HLxTM",
     start: 6,
     end: 16,
+  },
+];
+
+// Motion graphics where you used AI (same fields as above)
+window.AI_MOTION = [
+  {
+    title: "Luma AI — Playful",
+    client: "Self-initiated",
+    note: "A creative inspiration piece built around Luma AI's brand, not a client project. Motion graphics with AI in the mix.",
+    tools: [],
+    preview: "videos/mg-luma-ai-playful-preview.mp4",
+    poster: "img/mg-luma-ai-playful-poster.jpg",
+    full: "videos/mg-luma-ai-playful.mp4",
+    role: "Motion Graphics",
+  },
+  {
+    title: "AmpliFi — Sound Design",
+    client: "Motion study",
+    note: "Motion and sound design study, with AI in the mix.",
+    tools: [],
+    preview: "videos/mg-amplifi-sound-design-preview.mp4",
+    poster: "img/mg-amplifi-sound-design-poster.jpg",
+    full: "videos/mg-amplifi-sound-design.mp4",
+    role: "Motion Graphics",
   },
 ];
 

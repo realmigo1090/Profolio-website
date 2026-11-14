@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=2026111302" />
+  <link rel="stylesheet" href="css/style.css?v=2026111303" />
 </head>
 <body>
 
@@ -163,19 +163,40 @@
       </div>
     </div>
 
-    <!-- ============ AI WORK (cards come from window.AI_WORK in js/content.js; the section stays hidden while that list is empty) ============ -->
+    <!-- ============ AI WORK (cards come from window.AI_WORK and window.AI_MOTION in js/content.js; each group stays hidden while its list is empty) ============ -->
     <section class="ai container" id="ai" hidden>
       <div class="ai__head">
         <div>
           <p class="label">[ 02 — AI ]</p>
-          <h2 class="h2">Real footage,<br />pushed further with AI.</h2>
+          <h2 class="h2">Real footage and motion,<br />pushed further with AI.</h2>
         </div>
         <div class="ai__intro">
-          <p class="ai__lead">2–3 years of generative AI in my workflow. I use it inside the edit, not instead of it: AI imagery and video cut into footage I shoot, so the story still starts with the camera.</p>
+          <p class="ai__lead">2–3 years of generative AI in my workflow. I use it inside the work, not instead of it: in footage I shoot and in the motion graphics I build.</p>
           <div class="ai__tools" data-ai-tools hidden></div>
         </div>
       </div>
-      <div class="ai__grid" data-ai-grid></div>
+
+      <div class="ai__group" data-ai-group="footage" hidden>
+        <div class="ai__group-head">
+          <p class="ai__group-num">01</p>
+          <div>
+            <h3 class="ai__group-title">Real footage + AI</h3>
+            <p class="ai__group-desc">Shot on camera, then pushed further with AI in the edit.</p>
+          </div>
+        </div>
+        <div class="ai__grid" data-ai-grid="footage"></div>
+      </div>
+
+      <div class="ai__group" data-ai-group="motion" hidden>
+        <div class="ai__group-head">
+          <p class="ai__group-num">02</p>
+          <div>
+            <h3 class="ai__group-title">Motion graphics + AI</h3>
+            <p class="ai__group-desc">Type, logos and animation built by hand, with AI in the mix.</p>
+          </div>
+        </div>
+        <div class="ai__grid" data-ai-grid="motion"></div>
+      </div>
     </section>
 
     <!-- ============ SERVICES ============ -->
@@ -432,7 +453,7 @@
   </svg>
 
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/content.js?v=2026111302"></script>
-  <script src="js/main.js?v=2026111302"></script>
+  <script src="js/content.js?v=2026111303"></script>
+  <script src="js/main.js?v=2026111303"></script>
 </body>
 </html>
